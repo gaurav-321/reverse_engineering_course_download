@@ -1,4 +1,4 @@
-# 📚 Reverse Engineering Course Download
+# Reverse Engineering Course Download
 
 ## ✨ Description
 
