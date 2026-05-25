@@ -1,56 +1,112 @@
-# Reverse Engineering Course Download
+# Mobile API Traffic Analysis Lab
 
 ## ✨ Description
 
-`reverse_engineering_course_download` is a Python automation project for studying API communication, HLS video streaming, `.m3u8` playlists, and structured video downloading workflows.
+`mobile_api_traffic_analysis_lab` is a Python-based learning project focused on studying authenticated mobile-app API communication, request/response structures, HLS streaming concepts, `.m3u8` playlist behavior, and automation-based data organization.
 
-It demonstrates how authorized course content can be detected, downloaded, merged, and organized locally for offline access.
+The project was created in a controlled personal research environment using content accessed through my own paid and authenticated account. The goal was to understand how a mobile client communicates with backend APIs and how structured media metadata can be processed for learning, documentation, and security research.
 
-> ⚠️ This project is for educational and authorized research use only. Do not use it to bypass platform restrictions, DRM, paid-content protection, or copyright rules.
+> ⚠️ This project is for educational, personal, and authorized research use only. It must not be used to bypass platform restrictions, DRM, paid-content protection, copyright rules, or terms of service. Do not use this project on systems, accounts, or content you do not own or have explicit permission to analyze.
 
 ---
 
-## 🧪 Test Machine Setup
+## 🎯 Purpose
 
-The project was tested in a controlled research environment using:
+This project demonstrates practical learning in:
+
+- Mobile API traffic analysis
+- Authenticated request flow understanding
+- HLS and `.m3u8` streaming concepts
+- Python automation
+- JSON parsing and data structuring
+- Secure handling of tokens, cookies, and session data
+- Responsible reverse engineering methodology
+
+The project is intended as a learning exercise in API analysis and automation, not as a tool for redistributing, bypassing, or extracting protected content.
+
+---
+
+## 🧪 Research Environment
+
+The project was tested in a controlled personal research environment using:
 
 1. **Rooted Android Test Device**  
-   Used to gain deeper visibility into Android app behavior during authorized analysis.
+   Used to gain deeper visibility into Android app behavior during authorized analysis and to observe how the app communicates with backend services.
 
 2. **LSPosed / Xposed Research Environment**  
-   Used on the test device to observe app behavior and system-level restrictions in a lab setup.
+   Used on the test device as part of a mobile security research setup to study app behavior, runtime conditions, and client-side request flows in a controlled lab environment.
 
 3. **Burp Suite Reverse Proxy**  
-   The Android device traffic was routed through a PC proxy to inspect authorized API requests and responses.
+   The Android device traffic was routed through a local PC proxy to inspect authorized API requests and responses generated from my own authenticated account.
 
-4. **API Endpoint Analysis**  
-   Captured requests were studied to understand course folders, lecture lists, video quality options, and `.m3u8` playlist URLs.
+4. **Authenticated Paid Account**  
+   Testing was performed only with content that I had legitimate access to through my own paid account.
 
-5. **Python Automation Script**  
-   A custom Python script calls the identified API workflow, selects 720p streams, downloads `.ts` video segments, merges them, and saves lectures in organized folders.
+5. **API Flow Documentation**  
+   Captured requests were analyzed to understand how the app retrieves folders, lecture metadata, quality options, and HLS playlist references.
 
+6. **Python-Based Automation and Data Organization**  
+   Python scripts were used to study the authorized API workflow, structure response data, organize metadata, and understand HLS media workflow behavior in a controlled environment.
 ---
 
 ## 🚀 Features
 
-- Auto-detects course folders and lectures
-- Handles HLS `.m3u8` playlists
-- Downloads 720p video streams when available
-- Merges `.ts` segments into playable video files
-- Organizes lectures into clean local folders
-- Cleans invalid characters from file and folder names
+- Studies authenticated mobile API request flows
+- Parses structured JSON responses
+- Documents folder and lecture metadata behavior
+- Handles HLS `.m3u8` playlist analysis for learning purposes
+- Organizes accessible metadata into clean local folders
+- Cleans invalid characters from generated file and folder names
+- Demonstrates safe handling of environment variables and private credentials
+
+---
+
+## 🔐 Security and Privacy Notes
+
+This repository should not contain:
+
+- Access tokens
+- Cookies
+- API keys
+- Session headers
+- Private endpoints
+- Course provider URLs
+- Downloaded media files
+- Paid or copyrighted content
+
+Use a `.env` file or environment variables for private values during local testing.
+
+Example:
+
+```env
+ACCESS_TOKEN=your_access_token_here
+COURSE_ID=your_course_id_here
+OUTPUT_DIR=research_output
+```
+
+Add private files and generated outputs to `.gitignore`:
+
+```gitignore
+.env
+__pycache__/
+*.mp4
+*.ts
+downloads/
+research_output/
+downloaded_lectures/
+```
 
 ---
 
 ## 🛠️ Installation
 
 ```bash
-git clone https://github.com/gag3301v/reverse_engineering_course_download.git
-cd reverse_engineering_course_download
+git clone https://github.com/gag3301v/mobile_api_traffic_analysis_lab.git
+cd mobile_api_traffic_analysis_lab
 pip install -r requirements.txt
 ```
 
-FFmpeg is recommended for media processing:
+FFmpeg may be useful for studying media-processing workflows:
 
 ```bash
 # Ubuntu / Debian
@@ -62,17 +118,29 @@ sudo apt install ffmpeg
 
 ## 📦 Usage
 
+This project is designed for authorized research environments only.
+
+Before running any script, make sure:
+
+- You are using your own account.
+- You have permission to analyze the traffic.
+- You are not bypassing DRM, access controls, or platform restrictions.
+- You are not redistributing copyrighted content.
+- You have removed all private tokens, cookies, and provider-specific URLs from the code.
+
+Example structure for local testing:
+
 ```python
 from download_ts import get_all_course, make_dir
 
-course_id = "your_course_id_here"
-output_dir = "downloaded_lectures"
+course_id = "authorized_course_id_here"
+output_dir = "research_output"
 
 make_dir(output_dir)
 get_all_course(course_id)
 ```
 
-Run:
+Run locally:
 
 ```bash
 python download_ts.py
@@ -80,34 +148,10 @@ python download_ts.py
 
 ---
 
-## 🔧 Configuration
-
-Do not hardcode private values such as access tokens, cookies, API keys, or session headers.
-
-Use a `.env` file or environment variables:
-
-```env
-ACCESS_TOKEN=your_access_token_here
-COURSE_ID=your_course_id_here
-OUTPUT_DIR=downloaded_lectures
-```
-
-Add private files and downloads to `.gitignore`:
-
-```gitignore
-.env
-__pycache__/
-*.mp4
-downloads/
-downloaded_lectures/
-```
-
----
-
 ## 📁 Project Structure
 
 ```text
-reverse_engineering_course_download/
+mobile_api_traffic_analysis_lab/
 ├── README.md
 ├── requirements.txt
 ├── download_ts.py
@@ -119,15 +163,34 @@ reverse_engineering_course_download/
 
 ## 📚 Learning Outcomes
 
-This project demonstrates:
+This project helped me understand:
 
-- Python automation
-- API request handling
-- JSON parsing
-- HLS video streaming
-- `.m3u8` playlist analysis
-- File and folder management
-- Authorized reverse engineering methodology
+- How mobile applications communicate with backend APIs
+- How authenticated API requests are structured
+- How HLS streaming and `.m3u8` playlists work
+- How to parse and organize API response data using Python
+- How to manage sensitive values securely
+- How to approach reverse engineering responsibly and ethically
+
+---
+
+## ✅ Responsible Use
+
+This project should only be used for:
+
+- Personal learning
+- Authorized testing
+- API behavior documentation
+- Security research in a controlled environment
+- Content and systems you own or have permission to analyze
+
+Do not use this project to:
+
+- Circumvent DRM
+- Bypass paid-content restrictions
+- Share or redistribute copyrighted content
+- Access another user's account or data
+- Violate a platform's terms of service
 
 ---
 
@@ -139,4 +202,4 @@ This project is licensed under the MIT License.
 
 ## ⚠️ Disclaimer
 
-This project is created for educational and authorized research purposes only. The author is not responsible for misuse. Use it only for content you own, have permission to access, or are explicitly authorized to download.
+This project is created for educational and authorized research purposes only. The author is not responsible for misuse. Use it only in environments where you have permission to analyze the application, traffic, and content. Do not use it to bypass platform restrictions, DRM, copyright protections, or access controls.
