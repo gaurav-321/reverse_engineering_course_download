@@ -2,86 +2,141 @@
 
 ## ✨ Description
 
-(reverse_engineering_course_download) is a Python program designed to download video lectures from the ClassPlus platform. This tool simplifies the process of accessing educational content offline, making it accessible for students and learners on-the-go.
+`reverse_engineering_course_download` is a Python automation project for studying API communication, HLS video streaming, `.m3u8` playlists, and structured video downloading workflows.
+
+It demonstrates how authorized course content can be detected, downloaded, merged, and organized locally for offline access.
+
+> ⚠️ This project is for educational and authorized research use only. Do not use it to bypass platform restrictions, DRM, paid-content protection, or copyright rules.
+
+---
+
+## 🧪 Test Machine Setup
+
+The project was tested in a controlled research environment using:
+
+1. **Rooted Android Test Device**  
+   Used to gain deeper visibility into Android app behavior during authorized analysis.
+
+2. **LSPosed / Xposed Research Environment**  
+   Used on the test device to observe app behavior and system-level restrictions in a lab setup.
+
+3. **Burp Suite Reverse Proxy**  
+   The Android device traffic was routed through a PC proxy to inspect authorized API requests and responses.
+
+4. **API Endpoint Analysis**  
+   Captured requests were studied to understand course folders, lecture lists, video quality options, and `.m3u8` playlist URLs.
+
+5. **Python Automation Script**  
+   A custom Python script calls the identified API workflow, selects 720p streams, downloads `.ts` video segments, merges them, and saves lectures in organized folders.
+
+---
 
 ## 🚀 Features
 
-- **Auto-Detect Content:** Automatically fetches all course content, including folders and lectures.
-- **High-Quality Downloads:** Downloads videos in 1280x720 resolution to ensure the best quality.
-- **Progressive Downloading:** Handles large files efficiently with a user-friendly progress bar.
-- **Local Storage:** Organizes downloaded content into structured directories for easy access.
+- Auto-detects course folders and lectures
+- Handles HLS `.m3u8` playlists
+- Downloads 720p video streams when available
+- Merges `.ts` segments into playable video files
+- Organizes lectures into clean local folders
+- Cleans invalid characters from file and folder names
+
+---
 
 ## 🛠️ Installation
 
-To get started, follow these steps:
+```bash
+git clone https://github.com/gag3301v/reverse_engineering_course_download.git
+cd reverse_engineering_course_download
+pip install -r requirements.txt
+```
 
-1. **Clone the Repository:**
-   ```sh
-   git clone https://github.com/gag3301v/reverse_engineering_course_download.git
-   cd reverse_engineering_course_download
-   ```
+FFmpeg is recommended for media processing:
 
-2. **Install Dependencies:**
-   ```sh
-   pip install -r requirements.txt
-   ```
+```bash
+# Ubuntu / Debian
+sudo apt update
+sudo apt install ffmpeg
+```
+
+---
 
 ## 📦 Usage
 
-Here’s how you can use the script to download video lectures:
-
 ```python
-from download_ts import get_all_course, make_dir, clean_path
+from download_ts import get_all_course, make_dir
 
-# Set up directory and course ID
 course_id = "your_course_id_here"
 output_dir = "downloaded_lectures"
 
 make_dir(output_dir)
-
-# Start downloading all course content
 get_all_course(course_id)
 ```
 
-## 🔧 Configuration (if applicable)
+Run:
 
-No additional configuration is required. The script will automatically handle the necessary settings to download videos.
-
-## 🧪 Tests
-
-To ensure everything works as expected, you can run the following command:
-
-```sh
-pytest
+```bash
+python download_ts.py
 ```
-
-## 📁 Project Structure
-
-```
-reverse_engineering_course_download/
-├── README.md
-├── requirements.txt
-└── download_ts.py
-```
-
-- `README.md`: This file.
-- `requirements.txt`: Lists all dependencies.
-- `download_ts.py`: The main script for downloading videos.
-
-## 👩‍💻 Contributing
-
-Contributions are welcome! Please fork the repository and submit a pull request. For major changes, open an issue first to discuss what you’d like to change.
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-Feel free to reach out if you have any questions or need further assistance! 😊
+## 🔧 Configuration
+
+Do not hardcode private values such as access tokens, cookies, API keys, or session headers.
+
+Use a `.env` file or environment variables:
+
+```env
+ACCESS_TOKEN=your_access_token_here
+COURSE_ID=your_course_id_here
+OUTPUT_DIR=downloaded_lectures
+```
+
+Add private files and downloads to `.gitignore`:
+
+```gitignore
+.env
+__pycache__/
+*.mp4
+downloads/
+downloaded_lectures/
+```
+
+---
+
+## 📁 Project Structure
+
+```text
+reverse_engineering_course_download/
+├── README.md
+├── requirements.txt
+├── download_ts.py
+├── .env.example
+└── .gitignore
+```
+
+---
+
+## 📚 Learning Outcomes
+
+This project demonstrates:
+
+- Python automation
+- API request handling
+- JSON parsing
+- HLS video streaming
+- `.m3u8` playlist analysis
+- File and folder management
+- Authorized reverse engineering methodology
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## ⚠️ Disclaimer
+
+This project is created for educational and authorized research purposes only. The author is not responsible for misuse. Use it only for content you own, have permission to access, or are explicitly authorized to download.
